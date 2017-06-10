@@ -33,21 +33,21 @@ private func binarySearch<T: Comparable>(_ array:[T], target: T, range: Range<In
 }
 
 public func iteartiveBinarySearch<T: Comparable>(_ array:[T], target: T) -> Int? {
-    var minIndex = 0
-    var maxIndex = array.count - 1 // 3-1 = 2
+    var lowerBound = 0
+    var exclusiveUpperBound = array.count  // 3-1 = 2
     
-    while (maxIndex >= minIndex) {
-        let middleIndex = minIndex + ( maxIndex - minIndex) / 2
+    while (exclusiveUpperBound != lowerBound) {
+        let middleIndex = lowerBound + ( exclusiveUpperBound - lowerBound) / 2
         // compare middle with target
         if target == array[middleIndex] {
             // target equals to middle? return index
             return middleIndex
         } else if target < array[middleIndex] {
             // target less than middle? do this over again with the left half
-            maxIndex = middleIndex
+            exclusiveUpperBound = middleIndex
         } else {
             // otherwise, do this over again with the right half
-            minIndex = middleIndex+1
+            lowerBound = middleIndex
         }
         // 0 1 2
         // 1,2,3 target 3
